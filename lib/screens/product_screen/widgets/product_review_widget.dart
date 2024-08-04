@@ -53,18 +53,13 @@ Widget productReviewWidget(context, Product product) {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    height: 2.h,
-                  ),
                   buildRatingText(
                     context: context,
                     title: 'Client Reviews',
                     isFirst: true,
                     isLast: false,
-                  ),
-                  SizedBox(
-                    height: 1.5.h,
                   ),
                   buildRatingText(
                     context: context,
@@ -72,17 +67,11 @@ Widget productReviewWidget(context, Product product) {
                     isFirst: false,
                     isLast: false,
                   ),
-                  SizedBox(
-                    height: 1.8.h,
-                  ),
                   buildRatingText(
                     context: context,
                     title: 'Seller',
                     isFirst: false,
                     isLast: false,
-                  ),
-                  SizedBox(
-                    height: 2.h,
                   ),
                   buildRatingText(
                     context: context,
@@ -95,6 +84,7 @@ Widget productReviewWidget(context, Product product) {
               SizedBox(width: 8.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   buildRatingStars(
                     context: context,

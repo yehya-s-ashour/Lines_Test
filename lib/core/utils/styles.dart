@@ -6,7 +6,7 @@ import 'package:lines_co_test/core/utils/colors.dart';
 class AppTextStyles {
   static TextStyle displayLarge = GoogleFonts.dmSans(
     textStyle: TextStyle(
-      fontSize: 24.0.sp,
+      fontSize: 20.0.sp,
       fontWeight: FontWeight.w500,
       color: Colors.black,
     ),

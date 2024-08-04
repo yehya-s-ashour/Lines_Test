@@ -9,7 +9,6 @@ class OrderCubit extends Cubit<OrderState> {
   void loadOrders() async {
     try {
       emit(OrderLoading());
-      await Future.delayed(Duration(seconds: 1));
       emit(OrderLoaded(
           orders: _dummyOrders, selectedOrganization: _selectedOrganization));
     } catch (e) {

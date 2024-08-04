@@ -8,7 +8,6 @@ class PackageCubit extends Cubit<PackageState> {
   void loadPackages() async {
     try {
       emit(PackageLoading());
-      await Future.delayed(Duration(seconds: 1));
       emit(PackageLoaded(packages: _dummyPackages));
     } catch (e) {
       emit(PackageError('Failed to load packages'));

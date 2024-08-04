@@ -56,7 +56,7 @@ class SubscriptionOption extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? AppColors.kPrimaryPurble.withOpacity(0.8)
-              : Colors.grey[200],
+              : AppColors.kPrimaryPurble.withOpacity(0.2),
           borderRadius: BorderRadius.circular(18.r),
         ),
         child: Row(

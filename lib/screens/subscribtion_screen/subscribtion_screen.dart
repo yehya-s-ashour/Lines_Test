@@ -74,170 +74,188 @@ class SubscriptionScreen extends StatelessWidget {
                           child: BarChartSample(),
                         ),
                         SizedBox(height: 20.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: 16.w,
-                            ),
-                            TabItem(
-                              isSelected: currentIndex == 0,
-                              label: 'Personal',
-                              iconUrl: 'assets/icons/person.png',
-                              onTap: () => cubit.onTabSelected(0),
-                              flex: 4,
-                            ),
-                            TabItem(
-                              isSelected: currentIndex == 1,
-                              label: 'Workspace',
-                              iconUrl: 'assets/icons/person_2.png',
-                              onTap: () => cubit.onTabSelected(1),
-                              flex: 5,
-                            ),
-                            SizedBox(
-                              width: 16.w,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 228.h,
-                          child: PageView(
-                            controller: cubit.pageController,
-                            onPageChanged: (index) {
-                              cubit.onPageChanged(index);
-                            },
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20.h,
+                          ),
+                          color: AppColors.kPrimaryLightGrey,
+                          child: Column(
                             children: [
-                              SubscriptionContent(
-                                title: 'Personal',
-                                options: [
-                                  SubscriptionOption(
-                                    title: 'Annual',
-                                    price: '\$3.99/mo (\$47.99)',
-                                    discount: '-40%',
-                                    isSelected: selectedOptionIndices[0] == 0,
-                                    onTap: () => cubit.onOptionSelected(0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 16.w,
                                   ),
-                                  SubscriptionOption(
-                                    title: 'Monthly',
-                                    price: '\$6.99/mo',
-                                    isSelected: selectedOptionIndices[0] == 1,
-                                    onTap: () => cubit.onOptionSelected(1),
+                                  TabItem(
+                                    isSelected: currentIndex == 0,
+                                    label: 'Personal',
+                                    iconUrl: 'assets/icons/person.png',
+                                    onTap: () => cubit.onTabSelected(0),
+                                    flex: 4,
+                                  ),
+                                  TabItem(
+                                    isSelected: currentIndex == 1,
+                                    label: 'Workspace',
+                                    iconUrl: 'assets/icons/person_2.png',
+                                    onTap: () => cubit.onTabSelected(1),
+                                    flex: 5,
+                                  ),
+                                  SizedBox(
+                                    width: 16.w,
                                   ),
                                 ],
                               ),
-                              SubscriptionContent(
-                                title: 'Workspace',
-                                options: [
-                                  SubscriptionOption(
-                                    title: 'Team Plan',
-                                    price: '\$9.99/mo',
-                                    discount: '-20%',
-                                    isSelected: selectedOptionIndices[1] == 0,
-                                    onTap: () => cubit.onOptionSelected(0),
+                              SizedBox(
+                                height: 228.h,
+                                child: PageView(
+                                  controller: cubit.pageController,
+                                  onPageChanged: (index) {
+                                    cubit.onPageChanged(index);
+                                  },
+                                  children: [
+                                    SubscriptionContent(
+                                      title: 'Personal',
+                                      options: [
+                                        SubscriptionOption(
+                                          title: 'Annual',
+                                          price: '\$3.99/mo (\$47.99)',
+                                          discount: '-40%',
+                                          isSelected:
+                                              selectedOptionIndices[0] == 0,
+                                          onTap: () =>
+                                              cubit.onOptionSelected(0),
+                                        ),
+                                        SubscriptionOption(
+                                          title: 'Monthly',
+                                          price: '\$6.99/mo',
+                                          isSelected:
+                                              selectedOptionIndices[0] == 1,
+                                          onTap: () =>
+                                              cubit.onOptionSelected(1),
+                                        ),
+                                      ],
+                                    ),
+                                    SubscriptionContent(
+                                      title: 'Workspace',
+                                      options: [
+                                        SubscriptionOption(
+                                          title: 'Team Plan',
+                                          price: '\$9.99/mo',
+                                          discount: '-20%',
+                                          isSelected:
+                                              selectedOptionIndices[1] == 0,
+                                          onTap: () =>
+                                              cubit.onOptionSelected(0),
+                                        ),
+                                        SubscriptionOption(
+                                          title: 'Enterprise',
+                                          price: '\$29.99/mo',
+                                          isSelected:
+                                              selectedOptionIndices[1] == 1,
+                                          onTap: () =>
+                                              cubit.onOptionSelected(1),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainScreen(
+                                        initialIndex: 1,
+                                        targetPage: OrdersScreen(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    horizontal: 24.w,
                                   ),
-                                  SubscriptionOption(
-                                    title: 'Enterprise',
-                                    price: '\$29.99/mo',
-                                    isSelected: selectedOptionIndices[1] == 1,
-                                    onTap: () => cubit.onOptionSelected(1),
+                                  width: double.infinity,
+                                  height: 54.h,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.kPrimaryPurble,
+                                    borderRadius: BorderRadius.circular(
+                                      18.r,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Start 7-day trial',
+                                      style: GoogleFonts.ibmPlexSans(
+                                        // Updated to IBM Plex Sans
+                                        fontSize: 19.sp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Restore purchase',
+                                    style: GoogleFonts.ibmPlexSans(
+                                      // Updated to IBM Plex Sans
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kPrimaryGrey,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 2.h),
+                                    child: Text(
+                                      ' • ',
+                                      style: GoogleFonts.ibmPlexSans(
+                                        // Updated to IBM Plex Sans
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.kPrimaryGrey,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Terms',
+                                    style: GoogleFonts.ibmPlexSans(
+                                      // Updated to IBM Plex Sans
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kPrimaryGrey,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 2.h),
+                                    child: Text(
+                                      ' • ',
+                                      style: GoogleFonts.ibmPlexSans(
+                                        // Updated to IBM Plex Sans
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.kPrimaryGrey,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Privacy policy',
+                                    style: GoogleFonts.ibmPlexSans(
+                                      // Updated to IBM Plex Sans
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kPrimaryGrey,
+                                    ),
                                   ),
                                 ],
+                              ),
+                              SizedBox(
+                                height: 9.h,
                               ),
                             ],
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainScreen(
-                                  initialIndex: 1,
-                                  targetPage: OrdersScreen(),
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.symmetric(
-                              horizontal: 24.w,
-                            ),
-                            width: double.infinity,
-                            height: 54.h,
-                            decoration: BoxDecoration(
-                              color: AppColors.kPrimaryPurble,
-                              borderRadius: BorderRadius.circular(
-                                18.r,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Start 7-day trial',
-                                style: GoogleFonts.ibmPlexSans(
-                                  // Updated to IBM Plex Sans
-                                  fontSize: 19.sp,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Restore purchase',
-                              style: GoogleFonts.ibmPlexSans(
-                                // Updated to IBM Plex Sans
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.kPrimaryGrey,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.h),
-                              child: Text(
-                                ' • ',
-                                style: GoogleFonts.ibmPlexSans(
-                                  // Updated to IBM Plex Sans
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.kPrimaryGrey,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              'Terms',
-                              style: GoogleFonts.ibmPlexSans(
-                                // Updated to IBM Plex Sans
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.kPrimaryGrey,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 2.h),
-                              child: Text(
-                                ' • ',
-                                style: GoogleFonts.ibmPlexSans(
-                                  // Updated to IBM Plex Sans
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.kPrimaryGrey,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              'Privacy policy',
-                              style: GoogleFonts.ibmPlexSans(
-                                // Updated to IBM Plex Sans
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.kPrimaryGrey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 9.h,
                         ),
                       ],
                     ),

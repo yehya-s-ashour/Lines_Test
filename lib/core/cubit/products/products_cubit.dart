@@ -8,7 +8,6 @@ class ProductCubit extends Cubit<ProductState> {
   void loadProducts() async {
     try {
       emit(ProductLoading());
-      await Future.delayed(Duration(seconds: 1));
       emit(ProductLoaded(products: _dummyProducts));
     } catch (e) {
       emit(ProductError('Failed to load products'));

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lines_co_test/core/cubit/products/products_cubit.dart';
 import 'package:lines_co_test/core/cubit/subscribtion/subs_cubit.dart';
+import 'package:lines_co_test/core/utils/colors.dart';
 import 'package:lines_co_test/core/utils/styles.dart';
 import 'package:lines_co_test/screens/product_screen/product_screen.dart';
 
@@ -45,7 +46,10 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: AppTextStyles.lightTheme,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: AppColors.textColor),
+              useMaterial3: true,
+            ),
             home: ProductScreen(),
           ),
         );
